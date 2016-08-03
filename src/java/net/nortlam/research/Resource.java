@@ -41,6 +41,19 @@ public class Resource {
     @EJB
     private MongoProvider provider;
     
+    @GET @Path("/docs")
+    @Produces(MediaType.TEXT_HTML)
+    public String docs() {
+        return "<html>"
+                + "<body>"
+                + "<h1>/</h1>"
+                + "List all Persons available<br/>"
+                + "<table><tr><td></td><td>Content-type: application/json</td></tr></table>"
+                + "</body>"
+                + "</html>";
+    }
+    
+    
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response all() {
@@ -90,6 +103,8 @@ public class Resource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response create(Person person) {
+        LOG.log(Level.INFO, ">>> create()");
+        
         if(person == null) {
             LOG.log(Level.SEVERE, "### create() Parameter PERSON is NULL");
             return Response.status(Response.Status.BAD_REQUEST).build();
