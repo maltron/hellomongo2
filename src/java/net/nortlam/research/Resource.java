@@ -41,19 +41,6 @@ public class Resource {
     @EJB
     private MongoProvider provider;
     
-    @GET @Path("/docs")
-    @Produces(MediaType.TEXT_HTML)
-    public String docs() {
-        return "<html>"
-                + "<body>"
-                + "<h1>/</h1>"
-                + "List all Persons available<br/>"
-                + "<table><tr><td></td><td>Content-type: application/json</td></tr></table>"
-                + "</body>"
-                + "</html>";
-    }
-    
-    
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response all() {
@@ -186,7 +173,7 @@ public class Resource {
                 new Object[] {result.wasAcknowledged() ? "YES" : "NO", result.getMatchedCount(),
                 result.getModifiedCount(), result.getUpsertedId()});
         
-        return Response.ok().build();
+        return Response.status(Response.Status.ACCEPTED).build();
     }
     
     @DELETE @Path("{ID}")
@@ -231,5 +218,252 @@ public class Resource {
         LOG.log(Level.INFO, ">>> getCollection()");
         MongoDatabase database = provider.getClient().getDatabase("myclass88");
         return database.getCollection("persons");
+    }
+
+    @GET @Path("/docs")
+    @Produces(MediaType.TEXT_HTML)
+    public String docs() {
+        return "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"\n" +
+"\"http://www.w3.org/TR/html4/loose.dtd\">\n" +
+"<html>\n" +
+"<head>\n" +
+"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=windows-1252\">\n" +
+"<title>Untitled Document</title>\n" +
+"<style type=\"text/css\">\n" +
+"<!--\n" +
+".style1 {\n" +
+"	font-family: \"Courier New\", Courier, mono;\n" +
+"	font-weight: bold;\n" +
+"}\n" +
+".style3 {color: #FFFFFF}\n" +
+"-->\n" +
+"</style>\n" +
+"</head><table width=\"100%\"  border=\"0\">\n" +
+"  <tr>\n" +
+"    <th scope=\"col\">&nbsp;</th>\n" +
+"    <th scope=\"col\">&nbsp;</th>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <th scope=\"row\">&nbsp;</th>\n" +
+"    <td>&nbsp;</td>\n" +
+"  </tr>\n" +
+"</table>\n" +
+"\n" +
+"\n" +
+"<body>\n" +
+"<table width=\"100%\"  border=\"0\">\n" +
+"  <tr>\n" +
+"    <td width=\"40\" bgcolor=\"#000000\"><h1 align=\"center\" class=\"style3\">GET</h1></td>\n" +
+"    <td><h1>/</h1></td>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <td colspan=\"2\"><h2>List all Persons </h2></td>\n" +
+"  </tr>\n" +
+"</table>\n" +
+"<table width=\"100%\"  border=\"0\">\n" +
+"  <tr>\n" +
+"    <th scope=\"col\">&nbsp;</th>\n" +
+"    <th width=\"50%\" bgcolor=\"#FFFF00\" scope=\"col\">Consumes</th>\n" +
+"    <th width=\"50%\" bgcolor=\"#00FF00\" scope=\"col\">Produces</th>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <th scope=\"row\">&nbsp;</th>\n" +
+"    <td width=\"50%\" bgcolor=\"#FFFF00\">&nbsp;</td>\n" +
+"    <td width=\"50%\" bgcolor=\"#00FF00\" class=\"style1\">-H Accept: application/json </td>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <th scope=\"row\">Request</th>\n" +
+"    <td colspan=\"2\"><span class=\"style1\"># curl -X GET -i -H &quot;Accept: application/json&quot; http//&lt;server&gt;:&lt;port&gt;/ </span></td>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <th scope=\"row\">Response</th>\n" +
+"    <td colspan=\"2\" bgcolor=\"#CCCCCC\" class=\"style1\">HTTP/1.1 200 OK<br>\n" +
+"Connection: keep-alive<br>\n" +
+"X-Powered-By: Undertow/1<br>\n" +
+"Server: WildFly/10<br>\n" +
+"Content-Type: application/json<br>\n" +
+"Content-Length: 634<br>\n" +
+"Date: Wed, 03 Aug 2016 14:45:07 GMT\n" +
+"<p>[{&quot;_id&quot;:{&quot;timestamp&quot;:1470173022,&quot;machineIdentifier&quot;:9846577,&quot;processIdentifier&quot;:6728,&quot;counter&quot;:16385041,&quot;timeSecond&quot;:1470173022...</p></td>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <th scope=\"row\">ERROR</th>\n" +
+"    <td colspan=\"2\" bgcolor=\"#FF0000\">&nbsp;</td>\n" +
+"  </tr>\n" +
+"</table>\n" +
+"<p>&nbsp; </p>\n" +
+"<table width=\"100%\"  border=\"0\">\n" +
+"    <tr>\n" +
+"    <td width=\"15\" bgcolor=\"#000000\"><h1 align=\"center\" class=\"style3\">GET</h1></td>\n" +
+"    <td><h1>/{ID}</h1></td>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <td colspan=\"2\"><h2>Brings a specific Person by on his ID </h2></td>\n" +
+"  </tr>\n" +
+"</table>\n" +
+"<table width=\"100%\"  border=\"0\">\n" +
+"  <tr>\n" +
+"    <th scope=\"col\">&nbsp;</th>\n" +
+"    <th width=\"50%\" bgcolor=\"#FFFF00\" scope=\"col\">Consumes</th>\n" +
+"    <th width=\"50%\" bgcolor=\"#00FF00\" scope=\"col\">Produces</th>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <th scope=\"row\">&nbsp;</th>\n" +
+"    <td width=\"50%\" bgcolor=\"#FFFF00\">&nbsp;</td>\n" +
+"    <td width=\"50%\" bgcolor=\"#00FF00\" class=\"style1\">-H Accept: application/json </td>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <th scope=\"row\">Request</th>\n" +
+"    <td colspan=\"2\"><span class=\"style1\"># curl -X GET -i -H &quot;Accept: application/json&quot; http//&lt;server&gt;:&lt;port&gt;/57a12a2e963f311a482e069a</span></td>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <th scope=\"row\">Response</th>\n" +
+"    <td colspan=\"2\" bgcolor=\"#CCCCCC\" class=\"style1\"><p>HTTP/1.1 200 OK<br>\n" +
+"      Connection: keep-alive<br>\n" +
+"      X-Powered-By: Undertow/1<br>\n" +
+"      Server: WildFly/10<br>\n" +
+"      Content-Type: application/json<br>\n" +
+"      Content-Length: 75<br>\n" +
+"      Date: Wed, 03 Aug 2016 14:53:45 GMT</p>\n" +
+"    <p>{&quot;_id&quot;:&quot;57a12a2e963f311a482e069a&quot;,&quot;firstName&quot;:&quot;Mauricio&quot;,&quot;lastName&quot;:&quot;Leal&quot;}</p></td>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <th scope=\"row\">ERROR</th>\n" +
+"    <td colspan=\"2\" bgcolor=\"#FF0000\" style=\"style3\"><span class=\"style3\"><strong>400: Bad Request </strong> - If the ID is not well format<br/>\n" +
+"	    <strong>404: Resource not Found</strong> - Unable to locate this ID</span></td>\n" +
+"  </tr>\n" +
+"</table>\n" +
+"<p>&nbsp;</p>\n" +
+"<table width=\"100%\"  border=\"0\">\n" +
+"  <tr>\n" +
+"    <td width=\"40\" bgcolor=\"#000000\"><h1 align=\"center\" class=\"style3\">POST</h1></td>\n" +
+"    <td><h1>/</h1></td>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <td colspan=\"2\"><h2>Create a new Person </h2></td>\n" +
+"  </tr>\n" +
+"</table>\n" +
+"<table width=\"100%\"  border=\"0\">\n" +
+"  <tr>\n" +
+"    <th scope=\"col\">&nbsp;</th>\n" +
+"    <th width=\"50%\" bgcolor=\"#FFFF00\" scope=\"col\">Consumes</th>\n" +
+"    <th width=\"50%\" bgcolor=\"#00FF00\" scope=\"col\">Produces</th>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <th scope=\"row\">&nbsp;</th>\n" +
+"    <td width=\"50%\" bgcolor=\"#FFFF00\"><span class=\"style1\">-H Content-type: application/json </span></td>\n" +
+"    <td width=\"50%\" bgcolor=\"#00FF00\" class=\"style1\">-H Accept: application/json </td>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <th scope=\"row\">Request</th>\n" +
+"    <td colspan=\"2\"><span class=\"style1\"># curl -X POST -i -H &quot;Content-type: application/json&quot; -H &quot;Accept: application/json&quot; http//&lt;server&gt;:&lt;port&gt;/ \\<br/>\n" +
+"	-d &quot;{\\&quot;firstName\\&quot;:\\&quot;Mauricio\\&quot;,\\&quot;lastName\\&quot;:\\&quot;Leal\\&quot;}&quot; </span></td>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <th scope=\"row\">Response</th>\n" +
+"    <td colspan=\"2\" bgcolor=\"#CCCCCC\" class=\"style1\">HTTP/1.1 201 Created<br>\n" +
+"      Connection: keep-alive<br>\n" +
+"      X-Powered-By: Undertow/1<br>\n" +
+"      Server: WildFly/10<br>\n" +
+"      Content-Type: application/json<br>\n" +
+"      Content-Length: 75<br>\n" +
+"      Date: Wed, 03 Aug 2016 16:38:44 GMT\n" +
+"      <p>{&quot;_id&quot;:&quot;57a21e14394921563aaa8293&quot;,&quot;firstName&quot;:&quot;Mauricio&quot;,&quot;lastName&quot;:&quot;Leal&quot;}</p>\n" +
+"    </td></tr>\n" +
+"  <tr>\n" +
+"    <th scope=\"row\">ERROR</th>\n" +
+"    <td colspan=\"2\" bgcolor=\"#FF0000\"><span class=\"style3\"><strong>400 BAD REQUEST:</strong> If there is no content coming from the request. <br>\n" +
+"        <strong>406 NOT ACCEPTABLE:</strong> If the JSON Content is mal format<br>\n" +
+"        <strong>500 INTERNAL SERVER ERROR:</strong> The Service was unable to insert the content, possible due a data duplication.\n" +
+"    </span></td>\n" +
+"  </tr>\n" +
+"</table>\n" +
+"<p>&nbsp;</p>\n" +
+"<table width=\"100%\"  border=\"0\">\n" +
+"  <tr>\n" +
+"    <td width=\"40\" bgcolor=\"#000000\"><h1 align=\"center\" class=\"style3\">PUT</h1></td>\n" +
+"    <td><h1>/</h1></td>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <td colspan=\"2\"><h2>Update an existing Person </h2></td>\n" +
+"  </tr>\n" +
+"</table>\n" +
+"<table width=\"100%\"  border=\"0\">\n" +
+"  <tr>\n" +
+"    <th scope=\"col\">&nbsp;</th>\n" +
+"    <th width=\"50%\" bgcolor=\"#FFFF00\" scope=\"col\">Consumes</th>\n" +
+"    <th width=\"50%\" bgcolor=\"#00FF00\" scope=\"col\">Produces</th>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <th scope=\"row\">&nbsp;</th>\n" +
+"    <td width=\"50%\" bgcolor=\"#FFFF00\"><span class=\"style1\">-H Content-type: application/json </span></td>\n" +
+"    <td width=\"50%\" bgcolor=\"#00FF00\" class=\"style1\">&nbsp;</td>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <th scope=\"row\">Request</th>\n" +
+"    <td colspan=\"2\"><span class=\"style1\"># curl -X PUT -i -H &quot;Content-type: application/json&quot; http://&lt;server&gt;:&lt;port&gt;/ \\ <br/>\n" +
+"	-d &quot;{\\&quot;_id\\&quot;:\\&quot;57a12a2e963f311a482e069a\\&quot;,\\&quot;firstName\\&quot;:\\&quot;Mauricio\\&quot;,\\&quot;lastName\\&quot;:\\&quot;Freitas\\&quot;}&quot;</span></td>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <th scope=\"row\">Response</th>\n" +
+"    <td colspan=\"2\" bgcolor=\"#CCCCCC\" class=\"style1\">HTTP/1.1 202 Accepted<br>\n" +
+"      Connection: keep-alive<br>\n" +
+"      X-Powered-By: Undertow/1<br>\n" +
+"      Server: WildFly/10<br>\n" +
+"      Content-Length: 0<br>\n" +
+"      Date: Wed, 03 Aug 2016 17:38:23 GMT</td>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <th scope=\"row\">ERROR</th>\n" +
+"    <td colspan=\"2\" bgcolor=\"#FF0000\"><span class=\"style3\"><strong>400 BAD REQUEST:</strong> If there is no content coming from the request, the ID is absent or ID is not a properly formatted. <br>\n" +
+"        <strong>404 NOT FOUND:</strong> If the Person wasn't found <br>\n" +
+"        <strong>500 INTERNAL SERVER ERROR:</strong> The Service was unable to update the content.\n" +
+"    </span></td>\n" +
+"  </tr>\n" +
+"</table>\n" +
+"<p>&nbsp;</p>\n" +
+"<table width=\"100%\"  border=\"0\">\n" +
+"  <tr>\n" +
+"    <td width=\"40\" bgcolor=\"#000000\"><h1 align=\"center\" class=\"style3\">DELETE</h1></td>\n" +
+"    <td><h1>/</h1></td>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <td colspan=\"2\"><h2>Delete an existing Person </h2></td>\n" +
+"  </tr>\n" +
+"</table>\n" +
+"<table width=\"100%\"  border=\"0\">\n" +
+"  <tr>\n" +
+"    <th scope=\"col\">&nbsp;</th>\n" +
+"    <th width=\"50%\" bgcolor=\"#FFFF00\" scope=\"col\">Consumes</th>\n" +
+"    <th width=\"50%\" bgcolor=\"#00FF00\" scope=\"col\">Produces</th>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <th scope=\"row\">&nbsp;</th>\n" +
+"    <td width=\"50%\" bgcolor=\"#FFFF00\">&nbsp;</td>\n" +
+"    <td width=\"50%\" bgcolor=\"#00FF00\" class=\"style1\">&nbsp;</td>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <th scope=\"row\">Request</th>\n" +
+"    <td colspan=\"2\"><span class=\"style1\"># curl -X DELETE -i http://&lt;server&gt;:&lt;port&gt;/57a12a2e963f311a482e069a</span></td>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <th scope=\"row\">Response</th>\n" +
+"    <td colspan=\"2\" bgcolor=\"#CCCCCC\" class=\"style1\">HTTP/1.1 200 OK<br>\n" +
+"      Connection: keep-alive<br>\n" +
+"      X-Powered-By: Undertow/1<br>\n" +
+"      Server: WildFly/10<br>\n" +
+"      Content-Length: 0<br>\n" +
+"    Date: Wed, 03 Aug 2016 17:47:11 GMT</td>\n" +
+"  </tr>\n" +
+"  <tr>\n" +
+"    <th scope=\"row\">ERROR</th>\n" +
+"    <td colspan=\"2\" bgcolor=\"#FF0000\"><span class=\"style3\"><strong>400 BAD REQUEST:</strong> If there no ID specified or if the ID is not properly formatted <br>\n" +
+"        <strong>404 NOT FOUND:</strong> If the Person wasn't found <br>\n" +
+"        <strong>500 INTERNAL SERVER ERROR:</strong> The Service was unable to update the content.\n" +
+"    </span></td>\n" +
+"  </tr>\n" +
+"</table>\n" +
+"</body>\n" +
+"</html>";
     }
 }

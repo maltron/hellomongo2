@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Untitled Document</title>
+<style type="text/css">
+<!--
+.style1 {
+	font-family: "Courier New", Courier, mono;
+	font-weight: bold;
+}
+.style3 {color: #FFFFFF}
+-->
+</style>
+</head><table width="100%"  border="0">
+  <tr>
+    <th scope="col">&nbsp;</th>
+    <th scope="col">&nbsp;</th>
+  </tr>
+  <tr>
+    <th scope="row">&nbsp;</th>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+
+<body>
+<table width="100%"  border="0">
+  <tr>
+    <td width="40" bgcolor="#000000"><h1 align="center" class="style3">GET</h1></td>
+    <td><h1>/</h1></td>
+  </tr>
+  <tr>
+    <td colspan="2"><h2>List all Persons </h2></td>
+  </tr>
+</table>
+<table width="100%"  border="0">
+  <tr>
+    <th scope="col">&nbsp;</th>
+    <th width="50%" bgcolor="#FFFF00" scope="col">Consumes</th>
+    <th width="50%" bgcolor="#00FF00" scope="col">Produces</th>
+  </tr>
+  <tr>
+    <th scope="row">&nbsp;</th>
+    <td width="50%" bgcolor="#FFFF00">&nbsp;</td>
+    <td width="50%" bgcolor="#00FF00" class="style1">-H Accept: application/json </td>
+  </tr>
+  <tr>
+    <th scope="row">Request</th>
+    <td colspan="2"><span class="style1"># curl -X GET -i -H &quot;Accept: application/json&quot; http//&lt;server&gt;:&lt;port&gt;/ </span></td>
+  </tr>
+  <tr>
+    <th scope="row">Response</th>
+    <td colspan="2" bgcolor="#CCCCCC" class="style1">HTTP/1.1 200 OK<br>
+Connection: keep-alive<br>
+X-Powered-By: Undertow/1<br>
+Server: WildFly/10<br>
+Content-Type: application/json<br>
+Content-Length: 634<br>
+Date: Wed, 03 Aug 2016 14:45:07 GMT
+<p>[{&quot;_id&quot;:{&quot;timestamp&quot;:1470173022,&quot;machineIdentifier&quot;:9846577,&quot;processIdentifier&quot;:6728,&quot;counter&quot;:16385041,&quot;timeSecond&quot;:1470173022...</p></td>
+  </tr>
+  <tr>
+    <th scope="row">ERROR</th>
+    <td colspan="2" bgcolor="#FF0000">&nbsp;</td>
+  </tr>
+</table>
+<p>&nbsp; </p>
+<table width="100%"  border="0">
+    <tr>
+    <td width="15" bgcolor="#000000"><h1 align="center" class="style3">GET</h1></td>
+    <td><h1>/{ID}</h1></td>
+  </tr>
+  <tr>
+    <td colspan="2"><h2>Brings a specific Person by on his ID </h2></td>
+  </tr>
+</table>
+<table width="100%"  border="0">
+  <tr>
+    <th scope="col">&nbsp;</th>
+    <th width="50%" bgcolor="#FFFF00" scope="col">Consumes</th>
+    <th width="50%" bgcolor="#00FF00" scope="col">Produces</th>
+  </tr>
+  <tr>
+    <th scope="row">&nbsp;</th>
+    <td width="50%" bgcolor="#FFFF00">&nbsp;</td>
+    <td width="50%" bgcolor="#00FF00" class="style1">-H Accept: application/json </td>
+  </tr>
+  <tr>
+    <th scope="row">Request</th>
+    <td colspan="2"><span class="style1"># curl -X GET -i -H &quot;Accept: application/json&quot; http//&lt;server&gt;:&lt;port&gt;/57a12a2e963f311a482e069a</span></td>
+  </tr>
+  <tr>
+    <th scope="row">Response</th>
+    <td colspan="2" bgcolor="#CCCCCC" class="style1"><p>HTTP/1.1 200 OK<br>
+      Connection: keep-alive<br>
+      X-Powered-By: Undertow/1<br>
+      Server: WildFly/10<br>
+      Content-Type: application/json<br>
+      Content-Length: 75<br>
+      Date: Wed, 03 Aug 2016 14:53:45 GMT</p>
+    <p>{&quot;_id&quot;:&quot;57a12a2e963f311a482e069a&quot;,&quot;firstName&quot;:&quot;Mauricio&quot;,&quot;lastName&quot;:&quot;Leal&quot;}</p></td>
+  </tr>
+  <tr>
+    <th scope="row">ERROR</th>
+    <td colspan="2" bgcolor="#FF0000" style="style3"><span class="style3"><strong>400: Bad Request </strong> - If the ID is not well format<br/>
+	    <strong>404: Resource not Found</strong> - Unable to locate this ID</span></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%"  border="0">
+  <tr>
+    <td width="40" bgcolor="#000000"><h1 align="center" class="style3">POST</h1></td>
+    <td><h1>/</h1></td>
+  </tr>
+  <tr>
+    <td colspan="2"><h2>Create a new Person </h2></td>
+  </tr>
+</table>
+<table width="100%"  border="0">
+  <tr>
+    <th scope="col">&nbsp;</th>
+    <th width="50%" bgcolor="#FFFF00" scope="col">Consumes</th>
+    <th width="50%" bgcolor="#00FF00" scope="col">Produces</th>
+  </tr>
+  <tr>
+    <th scope="row">&nbsp;</th>
+    <td width="50%" bgcolor="#FFFF00"><span class="style1">-H Content-type: application/json </span></td>
+    <td width="50%" bgcolor="#00FF00" class="style1">-H Accept: application/json </td>
+  </tr>
+  <tr>
+    <th scope="row">Request</th>
+    <td colspan="2"><span class="style1"># curl -X POST -i -H &quot;Content-type: application/json&quot; -H &quot;Accept: application/json&quot; http//&lt;server&gt;:&lt;port&gt;/ \<br/>
+	-d &quot;{\&quot;firstName\&quot;:\&quot;Mauricio\&quot;,\&quot;lastName\&quot;:\&quot;Leal\&quot;}&quot; </span></td>
+  </tr>
+  <tr>
+    <th scope="row">Response</th>
+    <td colspan="2" bgcolor="#CCCCCC" class="style1">HTTP/1.1 201 Created<br>
+      Connection: keep-alive<br>
+      X-Powered-By: Undertow/1<br>
+      Server: WildFly/10<br>
+      Content-Type: application/json<br>
+      Content-Length: 75<br>
+      Date: Wed, 03 Aug 2016 16:38:44 GMT
+      <p>{&quot;_id&quot;:&quot;57a21e14394921563aaa8293&quot;,&quot;firstName&quot;:&quot;Mauricio&quot;,&quot;lastName&quot;:&quot;Leal&quot;}</p>
+    </td></tr>
+  <tr>
+    <th scope="row">ERROR</th>
+    <td colspan="2" bgcolor="#FF0000"><span class="style3"><strong>400 BAD REQUEST:</strong> If there is no content coming from the request. <br>
+        <strong>406 NOT ACCEPTABLE:</strong> If the JSON Content is mal format<br>
+        <strong>500 INTERNAL SERVER ERROR:</strong> The Service was unable to insert the content, possible due a data duplication.
+    </span></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%"  border="0">
+  <tr>
+    <td width="40" bgcolor="#000000"><h1 align="center" class="style3">PUT</h1></td>
+    <td><h1>/</h1></td>
+  </tr>
+  <tr>
+    <td colspan="2"><h2>Update an existing Person </h2></td>
+  </tr>
+</table>
+<table width="100%"  border="0">
+  <tr>
+    <th scope="col">&nbsp;</th>
+    <th width="50%" bgcolor="#FFFF00" scope="col">Consumes</th>
+    <th width="50%" bgcolor="#00FF00" scope="col">Produces</th>
+  </tr>
+  <tr>
+    <th scope="row">&nbsp;</th>
+    <td width="50%" bgcolor="#FFFF00"><span class="style1">-H Content-type: application/json </span></td>
+    <td width="50%" bgcolor="#00FF00" class="style1">&nbsp;</td>
+  </tr>
+  <tr>
+    <th scope="row">Request</th>
+    <td colspan="2"><span class="style1"># curl -X PUT -i -H &quot;Content-type: application/json&quot; http://&lt;server&gt;:&lt;port&gt;/ \ <br/>
+	-d &quot;{\&quot;_id\&quot;:\&quot;57a12a2e963f311a482e069a\&quot;,\&quot;firstName\&quot;:\&quot;Mauricio\&quot;,\&quot;lastName\&quot;:\&quot;Freitas\&quot;}&quot;</span></td>
+  </tr>
+  <tr>
+    <th scope="row">Response</th>
+    <td colspan="2" bgcolor="#CCCCCC" class="style1">HTTP/1.1 202 Accepted<br>
+      Connection: keep-alive<br>
+      X-Powered-By: Undertow/1<br>
+      Server: WildFly/10<br>
+      Content-Length: 0<br>
+      Date: Wed, 03 Aug 2016 17:38:23 GMT</td>
+  </tr>
+  <tr>
+    <th scope="row">ERROR</th>
+    <td colspan="2" bgcolor="#FF0000"><span class="style3"><strong>400 BAD REQUEST:</strong> If there is no content coming from the request, the ID is absent or ID is not a properly formatted. <br>
+        <strong>404 NOT FOUND:</strong> If the Person wasn't found <br>
+        <strong>500 INTERNAL SERVER ERROR:</strong> The Service was unable to update the content.
+    </span></td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<table width="100%"  border="0">
+  <tr>
+    <td width="40" bgcolor="#000000"><h1 align="center" class="style3">DELETE</h1></td>
+    <td><h1>/</h1></td>
+  </tr>
+  <tr>
+    <td colspan="2"><h2>Delete an existing Person </h2></td>
+  </tr>
+</table>
+<table width="100%"  border="0">
+  <tr>
+    <th scope="col">&nbsp;</th>
+    <th width="50%" bgcolor="#FFFF00" scope="col">Consumes</th>
+    <th width="50%" bgcolor="#00FF00" scope="col">Produces</th>
+  </tr>
+  <tr>
+    <th scope="row">&nbsp;</th>
+    <td width="50%" bgcolor="#FFFF00">&nbsp;</td>
+    <td width="50%" bgcolor="#00FF00" class="style1">&nbsp;</td>
+  </tr>
+  <tr>
+    <th scope="row">Request</th>
+    <td colspan="2"><span class="style1"># curl -X DELETE -i http://&lt;server&gt;:&lt;port&gt;/57a12a2e963f311a482e069a</span></td>
+  </tr>
+  <tr>
+    <th scope="row">Response</th>
+    <td colspan="2" bgcolor="#CCCCCC" class="style1">HTTP/1.1 200 OK<br>
+      Connection: keep-alive<br>
+      X-Powered-By: Undertow/1<br>
+      Server: WildFly/10<br>
+      Content-Length: 0<br>
+    Date: Wed, 03 Aug 2016 17:47:11 GMT</td>
+  </tr>
+  <tr>
+    <th scope="row">ERROR</th>
+    <td colspan="2" bgcolor="#FF0000"><span class="style3"><strong>400 BAD REQUEST:</strong> If there no ID specified or if the ID is not properly formatted <br>
+        <strong>404 NOT FOUND:</strong> If the Person wasn't found <br>
+        <strong>500 INTERNAL SERVER ERROR:</strong> The Service was unable to update the content.
+    </span></td>
+  </tr>
+</table>
+</body>
+</html>
